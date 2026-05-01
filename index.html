@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Digital Training</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{
+      font-family:Inter,sans-serif;
+      background:#000;
+      color:#fff;
+      min-height:100vh;
+      overflow-x:hidden;
+    }
+
+    .bg{
+      position:fixed;
+      inset:0;
+      background:
+        linear-gradient(rgba(20,20,40,.2) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(20,20,40,.2) 1px, transparent 1px),
+        radial-gradient(circle at center,#071120 0%,#000 70%);
+      background-size:40px 40px,40px 40px,100% 100%;
+      animation:gridMove 14s linear infinite;
+    }
+
+    @keyframes gridMove{
+      from{transform:translateY(0)}
+      to{transform:translateY(0px)}
+    }
+
+    .wrapper{
+      position:relative;
+      z-index:2;
+      width:100%;
+      max-width:540px;
+      margin:auto;
+      padding:40px 20px 80px;
+      text-align:center;
+    }
+
+    .logo{
+      opacity:.9;
+      font-size:13px;
+      margin-bottom:20px;
+      letter-spacing:.12em;
+    }
+
+    .tag{
+      display:inline-block;
+      border:1px solid rgba(0,102,255,.35);
+      border-radius:40px;
+      padding:8px 18px;
+      font-size:11px;
+      color:#4f8fff;
+      margin-bottom:24px;
+      box-shadow:0 0 30px rgba(0,102,255,.08);
+    }
+
+    h1{
+      font-size:62px;
+      line-height:1;
+      font-weight:800;
+      margin-bottom:22px;
+      letter-spacing:-0.04em;
+    }
+
+    .blue{color:#2979ff}
+
+    .desc{
+      color:#c7ced9;
+      line-height:1.8;
+      font-size:18px;
+      margin-bottom:42px;
+    }
+
+    .card{
+      background:rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:22px;
+      padding:26px;
+      backdrop-filter:blur(16px);
+      box-shadow:0 0 60px rgba(0,50,255,.08);
+      animation:float 5s ease-in-out infinite;
+    }
+
+    @keyframes float{
+      50%{transform:translateY(-6px)}
+    }
+
+    label{
+      display:block;
+      text-align:left;
+      font-size:11px;
+      opacity:.75;
+      margin:16px 0 8px;
+      letter-spacing:.12em;
+    }
+
+    input{
+      width:100%;
+      height:58px;
+      background:rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:14px;
+      padding:0 18px;
+      color:#fff;
+      outline:none;
+      transition:.25s;
+    }
+
+    input:focus{
+      border-color:#2a78ff;
+      box-shadow:0 0 20px rgba(42,120,255,.18);
+    }
+
+    .check{
+      margin-top:20px;
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      text-align:left;
+      font-size:11px;
+      color:#8d96a4;
+      line-height:1.6;
+    }
+
+    .cta-btn{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  width:100%;
+  height:66px;
+  margin-top:0px;
+
+  border-radius:16px;
+  background:linear-gradient(90deg,#2d7cff,#0b4fff);
+
+  color:#fff;
+  font-size:18px;
+  font-weight:700;
+  text-decoration:none;
+
+  cursor:pointer;
+  transition:.25s;
+  box-shadow:0 0 30px rgba(43,114,255,.25);
+}
+
+    .cta-btn:hover{
+      transform:translateY(-2px) scale(1.01);
+    }
+
+    .privacy{
+      margin-top:14px;
+      font-size:12px;
+      color:#777;
+    }
+
+    @media(max-width:768px){
+      h1{font-size:42px}
+      .desc{font-size:15px}
+    }
+  </style>
+</head>
+<body>
+  <div class="bg"></div>
+
+  <div class="wrapper">
+    <div class="logo">KUBA DROP</div>
+    <div class="tag">DARMOWY TRENING • OGRANICZONY DOSTĘP</div>
+
+    <h1>
+      Jak zbudować pierwsze 10,000zł online
+      <span class="blue">dzięki produktom cyfrowym w 2026 roku</span>
+    </h1>
+
+    <p class="desc">
+      Dołącz do osób, które zamiast oglądać sukces innych, budują własny system zarabiania online.
+    </p>
+
+    <div class="card">
+
+      <a href="https://discord.gg/GGdBzWrhHJ" class="cta-btn">
+  Obejrzyj Darmowy Trening →
+</a>
+
+      <div class="privacy">Po kliknięciu przycisku zostaniesz przekierowany do darmowego treningu, w którym dowiesz się wszystkiego co potrzebujesz o digital dropshippingu.</div>
+    </div>
+  </div>
+</body>
+</html>
