@@ -6,6 +6,8 @@
 
 <title>K.D Community</title>
 
+<link rel="icon" type="image/png" href="favicon.png">
+    
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -1294,20 +1296,79 @@ h1{
     .dashboard{
 
         width:100%;
+
+        max-width:340px;
+
+        margin:auto;
+
+        transform:scale(.78);
+
+        transform-origin:center top;
     }
 
 
 
     .stats{
 
-        grid-template-columns:1fr;
+        grid-template-columns:repeat(3,1fr);
 
-        gap:12px;
+        gap:8px;
     }
 
 
 
     .products{
+
+        grid-template-columns:repeat(2,1fr);
+
+        gap:8px;
+    }
+
+
+
+    .card,
+    .product{
+
+        padding:12px 8px;
+
+        min-height:110px;
+
+        border-radius:16px;
+    }
+
+
+
+    .card h2{
+
+        font-size:20px;
+
+        margin-top:8px;
+    }
+
+
+
+    .card p{
+
+        font-size:10px;
+    }
+
+
+
+    .product-name{
+
+        font-size:13px;
+    }
+    
+    .product-price{
+
+        font-size:11px;
+    }
+
+
+
+    .why-grid,
+    .benefits-grid,
+    .steps-grid{
 
         grid-template-columns:1fr;
     }
