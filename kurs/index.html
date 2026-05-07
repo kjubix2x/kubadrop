@@ -448,6 +448,10 @@ h1{
 
 .thumb{
 
+    position:relative;
+
+    overflow:hidden;
+
     height:60px;
 
     border-radius:14px;
@@ -455,6 +459,91 @@ h1{
     background:#111827;
 
     margin-bottom:16px;
+}
+
+
+
+.matrix-column{
+
+    position:absolute;
+
+    top:-120px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:2px;
+
+    font-size:11px;
+
+    font-weight:700;
+
+    font-family:Inter;
+
+    line-height:1;
+
+    animation:
+
+    matrixFall linear infinite;
+}
+
+
+
+.matrix-column span{
+
+    opacity:.14;
+
+    color:#00ffd0;
+
+    text-shadow:
+
+    0 0 6px
+
+    currentColor;
+}
+
+
+
+.matrix-column span.head{
+
+    opacity:1;
+}
+    
+
+
+@keyframes matrixFall{
+
+    from{
+
+        transform:
+
+        translateY(-100px);
+
+    }
+
+
+    to{
+
+        transform:
+
+        translateY(180px);
+
+    }
+
+}
+
+
+
+.thumb canvas{
+
+    width:100%;
+
+    height:100%;
+
+    display:block;
+
+    opacity:.9;
 }
 
 .product-name{
@@ -2351,6 +2440,168 @@ function animateScroll(targetY){
     );
 
 }
+
+document
+.querySelectorAll(".thumb")
+.forEach(thumb=>{
+
+
+    const chars =
+    "0123456789";
+
+
+
+    for(
+
+        let i = 0;
+
+        i < 12;
+
+        i++
+
+    ){
+
+
+        const column =
+
+        document.createElement(
+
+            "div"
+
+        );
+
+
+
+        column.className =
+
+        "matrix-column";
+
+
+
+        column.style.left =
+
+        (i * 8) +
+
+        "%";
+
+
+
+        column.style.animationDuration =
+
+        (
+
+            4 +
+
+            Math.random() * 4
+
+        ) +
+
+        "s";
+
+
+
+        column.style.animationDelay =
+
+        (
+
+            Math.random() * -6
+
+        ) +
+
+        "s";
+
+
+
+        for(
+
+            let j = 0;
+
+            j < 18;
+
+            j++
+
+        ){
+
+
+            const char =
+
+            document.createElement(
+
+                "span"
+
+            );
+
+
+
+            char.textContent =
+
+            chars[
+
+                Math.floor(
+
+                    Math.random()
+
+                    *
+
+                    chars.length
+
+                )
+
+            ];
+
+
+
+            if(
+
+                j === 0
+
+            ){
+
+                char.classList.add(
+
+                    "head"
+
+                );
+
+            }
+
+
+
+            if(
+
+                Math.random()
+
+                > .5
+
+            ){
+
+                char.style.color =
+
+                "#00d9ff";
+
+            }
+
+
+
+            column.appendChild(
+
+                char
+
+            );
+
+        }
+
+
+
+        thumb.appendChild(
+
+            column
+
+        );
+
+    }
+
+});
 
 </script>
 
