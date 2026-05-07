@@ -1,0 +1,2298 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>K.D Community</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    -webkit-font-smoothing:antialiased;
+
+    text-rendering:optimizeLegibility;
+
+    font-family:"Inter",sans-serif;
+
+    background:#030b16;
+
+    color:white;
+
+    overflow-x:hidden;
+
+    min-height:100vh;
+}
+
+body::before{
+
+    content:"";
+
+    position:fixed;
+
+    inset:0;
+
+    background:
+    radial-gradient(circle at 20% 20%, rgba(0,255,208,.10), transparent 25%),
+    radial-gradient(circle at 80% 70%, rgba(0,100,255,.08), transparent 25%);
+
+    pointer-events:none;
+}
+
+.container{
+
+    width:1400px;
+    max-width:92%;
+
+    margin:auto;
+}
+
+.navbar{
+
+    height:100px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+
+    font-family:"Plus Jakarta Sans",sans-serif;
+
+    font-weight:800;
+
+    color:#00ffd0;
+
+    display:flex;
+    align-items:center;
+    gap:14px;
+
+    font-size:28px;
+}
+
+.logo-icon{
+
+    width:48px;
+    height:48px;
+
+    border-radius:16px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:linear-gradient(135deg,#00ffd0,#00bfa5);
+
+    color:#08111d;
+
+    box-shadow:0 0 30px rgba(0,255,208,.25);
+
+    transition:.3s;
+}
+
+.logo:hover .logo-icon{
+
+    transform:scale(1.08) rotate(8deg);
+}
+
+.nav-links{
+
+    display:flex;
+
+    gap:50px;
+}
+
+.nav-links a{
+
+    color:#7f8ba5;
+
+    text-decoration:none;
+
+    transition:.3s;
+}
+
+.nav-links a:hover{
+
+    color:white;
+
+    transform:translateY(-2px);
+}
+
+.hero{
+
+    min-height:calc(100vh - 100px);
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:80px;
+}
+
+.left{
+
+    flex:1;
+
+    max-width:600px;
+}
+
+.badge{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:12px 22px;
+
+    border-radius:999px;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    color:#94a3b8;
+
+    margin-bottom:32px;
+}
+
+.badge-dot{
+
+    width:8px;
+    height:8px;
+
+    border-radius:50%;
+
+    background:#00ffd0;
+
+    box-shadow:0 0 10px #00ffd0;
+}
+
+h1{
+
+    font-family:"Plus Jakarta Sans",sans-serif;
+
+    font-size:70px;
+
+    line-height:1;
+
+    font-weight:800;
+
+    letter-spacing:-3px;
+
+    margin-bottom:28px;
+}
+
+.highlight{
+
+    color:#00ffd0;
+
+    text-shadow:0 0 40px rgba(0,255,208,.3);
+}
+
+.subtitle{
+
+    color:#7f8ba5;
+
+    font-size:20px;
+
+    line-height:1.5;
+
+    margin-bottom:40px;
+}
+
+.cta{
+
+    font-family:"Plus Jakarta Sans",sans-serif;
+
+    display:inline-flex;
+
+    padding:24px 42px;
+
+    border-radius:20px;
+
+    background:#00ffd0;
+
+    color:#08111d;
+
+    text-decoration:none;
+
+    font-size:22px;
+
+    font-weight:700;
+
+    box-shadow:0 0 40px rgba(0,255,208,.25);
+
+    transition:.3s;
+
+    margin-bottom:20px;
+}
+
+.cta:hover{
+
+    transform:translateY(-4px) scale(1.03);
+}
+
+.price{
+
+    color:#64748b;
+
+    margin-bottom:34px;
+}
+
+.secondary{
+
+    font-family:"Plus Jakarta Sans",sans-serif;
+
+    display:inline-flex;
+
+    padding:18px 28px;
+
+    border-radius:999px;
+
+    border:1px solid rgba(0,255,208,.35);
+
+    color:white;
+
+    text-decoration:none;
+
+    transition:.3s;
+}
+
+.secondary:hover{
+
+    background:rgba(0,255,208,.08);
+}
+
+.right{
+
+    flex:1;
+
+    display:flex;
+
+    justify-content:center;
+}
+
+.dashboard{
+
+    width:720px;
+
+    border-radius:28px;
+
+    overflow:hidden;
+
+    border:1px solid rgba(255,255,255,.06);
+
+    background:
+    radial-gradient(circle at top left, rgba(0,255,200,.08), transparent 25%),
+    linear-gradient(180deg,#0b1220,#09111b);
+
+    box-shadow:
+    0 30px 80px rgba(0,0,0,.45);
+
+    animation:float 5s ease-in-out infinite;
+
+    transition:.2s;
+}
+
+@keyframes float{
+
+    0%{transform:translateY(0px);}
+    50%{transform:translateY(-18px);}
+    100%{transform:translateY(0px);}
+}
+
+.header{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    padding:18px 24px;
+
+    border-bottom:1px solid rgba(255,255,255,.05);
+}
+
+.dots{
+
+    display:flex;
+
+    gap:8px;
+}
+
+.dot{
+
+    width:10px;
+    height:10px;
+
+    border-radius:50%;
+}
+
+.red{background:#ff5f56;}
+.yellow{background:#ffbd2e;}
+.green{background:#27c93f;}
+
+.title{
+
+    font-family:"Plus Jakarta Sans",sans-serif;
+
+    color:#8fa0bd;
+
+    font-size:14px;
+}
+
+.stats{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:18px;
+
+    padding:24px;
+}
+
+.card{
+
+    background:rgba(255,255,255,.02);
+
+    border:1px solid rgba(255,255,255,.05);
+
+    border-radius:20px;
+
+    text-align:center;
+
+    padding:26px 20px;
+
+    transition:.3s;
+}
+
+.card:hover{
+
+    transform:translateY(-6px);
+
+    border-color:rgba(0,255,208,.2);
+}
+
+.card h2{
+
+    font-family:"Plus Jakarta Sans",sans-serif;
+
+    font-size:34px;
+
+    letter-spacing:-1px;
+
+    margin-bottom:6px;
+}
+
+.card p{
+
+    color:#7f8ba5;
+
+    font-size:14px;
+}
+
+.icon{
+
+    font-size:18px;
+
+    margin-bottom:10px;
+}
+
+.products{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:18px;
+
+    padding:0 24px 24px;
+}
+
+.product{
+
+    background:rgba(255,255,255,.02);
+
+    border:1px solid rgba(255,255,255,.05);
+
+    border-radius:20px;
+
+    padding:18px;
+
+    transition:.3s;
+}
+
+.product:hover{
+
+    transform:translateY(-6px);
+}
+
+.thumb{
+
+    height:60px;
+
+    border-radius:14px;
+
+    background:#111827;
+
+    margin-bottom:16px;
+}
+
+.product-name{
+
+    font-family:"Plus Jakarta Sans",sans-serif;
+
+    font-weight:700;
+
+    margin-bottom:10px;
+}
+
+.product-bottom{
+
+    display:flex;
+
+    justify-content:space-between;
+}
+
+.product-price{
+
+    color:#94a3b8;
+}
+
+.product-growth{
+
+    color:#00ffd0;
+
+    font-weight:700;
+}
+
+.benefits{
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:100px;
+
+    padding:120px 0;
+}
+
+.benefits-left{
+
+    flex:1;
+
+    max-width:450px;
+
+    position:sticky;
+
+    top:120px;
+}
+
+.benefits-left h2{
+
+    font-family:"Plus Jakarta Sans",sans-serif;
+
+    font-size:70px;
+
+    line-height:1;
+
+    font-weight:800;
+
+    letter-spacing:-3px;
+
+    margin-bottom:30px;
+}
+
+.benefits-left p{
+
+    color:#7f8ba5;
+
+    font-size:20px;
+
+    line-height:1.5;
+}
+
+.benefits-right{
+
+    flex:1;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:22px;
+}
+
+.benefit-card{
+
+    background:
+    linear-gradient(180deg,#0b1220,#09111b);
+
+    border:1px solid rgba(255,255,255,.05);
+
+    border-radius:28px;
+
+    padding:40px;
+
+    transform-style:preserve-3d;
+
+    transition:.2s;
+}
+
+.benefit-card:hover{
+
+    border-color:rgba(0,255,208,.15);
+}
+
+.benefit-card h3{
+
+    font-family:"Plus Jakarta Sans",sans-serif;
+
+    font-size:20px;
+
+    margin-bottom:20px;
+}
+
+.benefit-card p{
+
+    color:#7f8ba5;
+
+    font-size:16px;
+
+    line-height:1;
+}
+
+.benefit-card span{
+
+    color:#00ffd0;
+
+    font-weight:600;
+}
+
+.features{
+
+    padding:140px 0;
+}
+
+.features-top{
+
+    text-align:center;
+
+    margin-bottom:50px;
+}
+
+.section-badge{
+
+    display:inline-flex;
+
+    padding:12px 24px;
+
+    border-radius:999px;
+
+    background:rgba(0,255,208,.08);
+
+    color:#00ffd0;
+
+    font-weight:600;
+
+    margin-bottom:30px;
+}
+
+.features-top h2{
+
+    font-family:"Plus Jakarta Sans",sans-serif;
+
+    font-size:70px;
+
+    letter-spacing:-3px;
+
+    margin-bottom:20px;
+}
+
+.features-top p{
+
+    color:#7f8ba5;
+
+    font-size:24px;
+}
+
+.tabs{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:18px;
+
+    margin-bottom:50px;
+}
+
+.tab{
+
+    font-family:"Plus Jakarta Sans",sans-serif;
+
+    background:transparent;
+
+    color:#7f8ba5;
+
+    border:1px solid rgba(255,255,255,.06);
+
+    border-radius:16px;
+
+    padding:18px 28px;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.tab.active{
+
+    background:#00ffd0;
+
+    color:#08111d;
+
+    box-shadow:0 0 35px rgba(0,255,208,.25);
+}
+
+.tab-content{
+
+    display:none;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:22px;
+}
+
+.tab-content.active{
+
+    display:grid;
+}
+
+.feature-card{
+
+    height:140px;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+    padding:24px;
+
+    border-radius:28px;
+
+    background:
+    linear-gradient(180deg,#0b1220,#09111b);
+
+    border:1px solid rgba(255,255,255,.05);
+
+    font-family:"Plus Jakarta Sans",sans-serif;
+
+    font-size:24px;
+
+    font-weight:700;
+
+    letter-spacing:0px;
+
+    transition:.3s;
+
+    transform-style:preserve-3d;
+}
+
+.feature-card:hover{
+
+    border-color:rgba(0,255,208,.15);
+
+    box-shadow:
+    0 0 35px rgba(0,255,208,.06);
+}
+
+.steps{
+
+    padding:140px 0;
+}
+
+.steps-top{
+
+    text-align:center;
+
+    margin-bottom:70px;
+}
+
+.steps-top h2{
+
+    font-family:"Plus Jakarta Sans",sans-serif;
+
+    font-size:70px;
+
+    letter-spacing:-3px;
+
+    margin-bottom:20px;
+}
+
+.steps-top h2 span{
+
+    color:#00ffd0;
+}
+
+.steps-top p{
+
+    color:#7f8ba5;
+
+    font-size:20px;
+
+    max-width:800px;
+
+    margin:auto;
+}
+
+.steps-grid{
+
+    position:relative;
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:30px;
+
+    margin-bottom:50px;
+}
+
+.steps-grid::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:50%;
+
+    left:0;
+    right:0;
+
+    height:2px;
+
+    background:
+    linear-gradient(
+    90deg,
+    transparent,
+    rgba(0,255,208,.25),
+    transparent
+    );
+
+    z-index:0;
+}
+
+.step-card{
+
+    position:relative;
+
+    z-index:1;
+
+    min-height:300px;
+
+    border-radius:28px;
+
+    background:
+    linear-gradient(180deg,#0b1220,#09111b);
+
+    border:1px solid rgba(255,255,255,.05);
+
+    padding:30px;
+
+    transition:.3s;
+}
+
+.step-card:hover{
+
+    border-color:rgba(0,255,208,.15);
+
+    box-shadow:
+    0 0 30px rgba(0,255,208,.06);
+}
+
+.step-number{
+
+    position:absolute;
+
+    top:25px;
+    right:25px;
+
+    font-family:"Plus Jakarta Sans",sans-serif;
+
+    font-size:58px;
+
+    font-weight:800;
+
+    color:rgba(255,255,255,.08);
+}
+
+.step-icon{
+
+    width:70px;
+    height:70px;
+
+    border-radius:20px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:28px;
+
+    margin-bottom:30px;
+
+    background:rgba(0,255,208,.08);
+}
+
+.step-card h3{
+
+    font-family:"Plus Jakarta Sans",sans-serif;
+
+    font-size:24px;
+
+    margin-bottom:20px;
+}
+
+.step-card p{
+
+    color:#7f8ba5;
+
+    font-size:16px;
+
+    line-height:1.5;
+}
+
+.steps-footer{
+
+    text-align:center;
+
+    font-size:14px;
+
+    color:#7f8ba5;
+}
+
+.steps-footer span{
+
+    color:#00ffd0;
+
+    font-weight:700;
+}
+
+.modal-overlay{
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100dvh;
+
+    padding:20px;
+
+    background:rgba(0,0,0,.65);
+
+    backdrop-filter:blur(12px);
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:.3s;
+
+    z-index:9999;
+
+    overflow-y:auto;
+}
+
+.modal-overlay.active{
+
+    opacity:1;
+
+    pointer-events:auto;
+}
+
+.modal-box{
+
+    position:relative;
+
+    width:900px;
+    max-width:90%;
+
+    border-radius:32px;
+
+    padding:60px;
+
+    text-align:center;
+
+    background:
+    linear-gradient(180deg,#0b1220,#09111b);
+
+    border:1px solid rgba(255,255,255,.06);
+
+    transform:scale(.92);
+
+    transition:.3s;
+}
+
+.modal-overlay.active .modal-box{
+
+    transform:scale(1);
+}
+
+.close-modal{
+
+    position:absolute;
+
+    top:25px;
+    right:25px;
+
+    background:none;
+
+    border:none;
+
+    color:#7f8ba5;
+
+    font-size:28px;
+
+    cursor:pointer;
+}
+
+.modal-box h2{
+
+    font-family:"Plus Jakarta Sans",sans-serif;
+
+    font-size:54px;
+
+    margin-bottom:20px;
+}
+
+.modal-box p{
+
+    color:#7f8ba5;
+
+    font-size:22px;
+
+    margin-bottom:50px;
+}
+
+.modal-badge{
+
+    display:inline-flex;
+
+    padding:12px 24px;
+
+    border-radius:999px;
+
+    background:rgba(0,255,208,.08);
+
+    color:#00ffd0;
+
+    margin-bottom:30px;
+}
+
+.pricing-grid{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:25px;
+}
+
+.pricing-card{
+
+    padding:40px;
+
+    border-radius:28px;
+
+    border:1px solid rgba(255,255,255,.05);
+
+    transition:.3s;
+}
+
+.pricing-card:hover{
+
+    transform:translateY(-6px);
+}
+
+.pricing-card h3{
+
+    font-family:"Plus Jakarta Sans",sans-serif;
+
+    font-size:28px;
+
+    margin-bottom:20px;
+}
+
+.pricing-price{
+
+    font-family:"Plus Jakarta Sans",sans-serif;
+
+    font-size:58px;
+
+    font-weight:800;
+
+    letter-spacing:-2px;
+
+    line-height:1;
+
+    color:#00ffd0;
+
+    margin-bottom:12px;
+
+    text-shadow:
+    0 0 25px rgba(0,255,208,.12);
+}
+
+.pricing-card span{
+
+    color:#7f8ba5;
+
+    display:block;
+
+    margin-bottom:30px;
+}
+
+.pricing-button{
+
+    width:100%;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    padding:18px;
+
+    border-radius:18px;
+
+    background:#00ffd0;
+
+    color:#08111d !important;
+
+    text-decoration:none !important;
+
+    font-family:"Plus Jakarta Sans",sans-serif;
+
+    font-weight:700;
+
+    line-height:1;
+
+    outline:none;
+
+    border:none;
+
+    transition:.3s;
+}
+
+.pricing-button:hover,
+.pricing-button:focus,
+.pricing-button:active,
+.pricing-button:visited{
+
+    color:#08111d !important;
+
+    text-decoration:none !important;
+}
+
+.featured{
+
+    box-shadow:
+    0 0 40px rgba(0,255,208,.08);
+}
+
+.monthly-price{
+
+    color:white;
+
+    text-shadow:none;
+}
+
+.lifetime-price{
+
+    color:#00ffd0;
+
+    text-shadow:
+    0 0 25px rgba(0,255,208,.12);
+}
+
+.reveal{
+
+    opacity:0;
+
+    transform:
+    translateY(60px);
+
+    transition:
+    opacity .9s ease,
+    transform .9s ease;
+}
+
+.reveal.active{
+
+    opacity:1;
+
+    transform:
+    translateY(0);
+}
+
+@media (max-width: 768px){
+
+    .modal-box{
+
+    max-height:90dvh;
+
+    overflow-y:auto;
+     }
+    
+    .container{
+
+        max-width:100%;
+
+        padding:0 20px;
+    }
+
+
+
+    .navbar{
+
+        height:auto;
+
+        padding:24px 0;
+
+        flex-direction:column;
+
+        gap:24px;
+    }
+
+
+
+    .nav-links{
+
+        gap:18px;
+
+        flex-wrap:wrap;
+
+        justify-content:center;
+    }
+
+
+
+    .nav-links a{
+
+        font-size:14px;
+    }
+
+
+
+    .logo{
+
+        font-size:22px;
+    }
+
+
+
+    .logo-icon{
+
+        width:42px;
+        height:42px;
+    }
+
+
+
+    .hero{
+
+        min-height:auto;
+
+        flex-direction:column;
+
+        gap:50px;
+
+        text-align:center;
+
+        padding:40px 0 80px;
+    }
+
+
+
+    .left{
+
+        max-width:100%;
+    }
+
+
+
+    h1{
+
+        font-size:42px;
+
+        letter-spacing:-2px;
+    }
+
+
+
+    .subtitle{
+
+        font-size:16px;
+    }
+
+
+
+    .cta{
+
+        width:100%;
+
+        justify-content:center;
+
+        font-size:18px;
+
+        padding:20px;
+    }
+
+
+
+    .secondary{
+
+        width:100%;
+
+        justify-content:center;
+    }
+
+
+
+    .dashboard{
+
+        width:100%;
+    }
+
+
+
+    .stats{
+
+        grid-template-columns:1fr;
+
+        gap:12px;
+    }
+
+
+
+    .products{
+
+        grid-template-columns:1fr;
+    }
+
+
+
+    .benefits{
+
+        min-height:auto;
+
+        flex-direction:column;
+
+        gap:40px;
+
+        padding:80px 0;
+    }
+
+
+
+    .benefits-left{
+
+        position:static;
+
+        max-width:100%;
+
+        text-align:center;
+    }
+
+
+
+    .benefits-left h2{
+
+        font-size:42px;
+    }
+
+
+
+    .features{
+
+        padding:80px 0;
+    }
+
+
+
+    .features-top h2{
+
+        font-size:42px;
+    }
+
+
+
+    .features-top p{
+
+        font-size:16px;
+    }
+
+
+
+    .tabs{
+
+        flex-wrap:wrap;
+
+        gap:12px;
+    }
+
+
+
+    .tab{
+
+        padding:14px 20px;
+
+        font-size:14px;
+    }
+
+
+
+    .tab-content{
+
+        grid-template-columns:1fr;
+    }
+
+
+
+    .feature-card{
+
+        font-size:20px;
+
+        height:100px;
+    }
+
+
+
+    .steps{
+
+        padding:80px 0;
+    }
+
+
+
+    .steps-top h2{
+
+        font-size:42px;
+    }
+
+
+
+    .steps-grid{
+
+        grid-template-columns:1fr;
+
+        gap:20px;
+    }
+
+
+
+    .steps-grid::before{
+
+        display:none;
+    }
+
+
+
+    .step-card{
+
+        min-height:auto;
+    }
+
+
+
+    .step-number{
+
+        font-size:40px;
+    }
+
+
+
+    .modal-box{
+
+        padding:30px 20px;
+    }
+
+
+
+    .modal-box h2{
+
+        font-size:34px;
+    }
+
+
+
+    .modal-box p{
+
+        font-size:16px;
+    }
+
+
+
+    .pricing-grid{
+
+        grid-template-columns:1fr;
+    }
+
+
+
+    .pricing-price{
+
+        font-size:42px;
+    }
+
+}
+
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<nav class="navbar"> 
+
+    <div class="logo">
+
+        <div class="logo-icon">$</div>
+
+        K.D
+
+    </div>
+
+    <div class="nav-links">
+
+        <a href="#hero">Home</a>
+        <a href="#features">Oferta</a>
+        <a href="#steps">Jak to działa?</a>
+        <a href="https://discord.com/invite/GGdBzWrhHJ">Kontakt</a>
+
+    </div>
+
+</nav>
+
+
+<section class="hero reveal" id="hero">
+
+    <div class="left">
+
+        <div class="badge">
+
+            <div class="badge-dot"></div>
+
+            Zacznij już teraz!
+
+        </div>
+
+
+        <h1>
+
+            Sprzedawaj online.<br>
+
+            <span class="highlight">
+                Bez dostaw.
+            </span>
+
+        </h1>
+
+
+        <div class="subtitle">
+
+            Pomożemy Ci wystartować od A do Z.
+            Produkty cyfrowe, Narzędzia AI, a to wszystko
+            gotowe w jednym miejscu.
+
+        </div>
+
+
+        <button class="cta" id="openModal">
+            Dołącz teraz →
+        </button>
+
+
+        <div class="price">
+
+            49,99 zł / mies • anuluj kiedy chcesz
+
+        </div>
+
+
+        <a href="https://discord.com/invite/GGdBzWrhHJ" class="secondary">
+
+            Masz pytania? Napisz do mnie →
+
+        </a>
+
+    </div>
+
+
+
+    <div class="right">
+
+        <div class="dashboard" id="dashboard">
+
+            <div class="header">
+
+                <div class="dots">
+
+                    <div class="dot red"></div>
+                    <div class="dot yellow"></div>
+                    <div class="dot green"></div>
+
+                </div>
+
+                <div class="title">
+
+                    Kuba Drop Community
+
+                </div>
+
+            </div>
+
+
+
+            <div class="stats">
+
+                <div class="card">
+                    <div class="icon">📦</div>
+                    <h2>2</h2>
+                    <p>Produkty</p>
+                </div>
+
+                <div class="card">
+                    <div class="icon">🛒</div>
+                    <h2>233</h2>
+                    <p>Zamówienia</p>
+                </div>
+
+                <div class="card">
+                    <div class="icon">📈</div>
+                    <h2>14.9k</h2>
+                    <p>Przychód</p>
+                </div>
+
+            </div>
+
+
+            <div class="products">
+
+                <div class="product">
+
+                    <div class="thumb"></div>
+
+                    <div class="product-name">
+                        Produkt Cyfrowy 1
+                    </div>
+
+                    <div class="product-bottom">
+
+                        <div class="product-price">
+                            149 zł
+                        </div>
+
+                        <div class="product-growth">
+                            +23%
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="product">
+
+                    <div class="thumb"></div>
+
+                    <div class="product-name">
+                        Produkt Cyfrowy 2
+                    </div>
+
+                    <div class="product-bottom">
+
+                        <div class="product-price">
+                            89 zł
+                        </div>
+
+                        <div class="product-growth">
+                            +41%
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="benefits reveal" id="benefits">
+
+    <div class="benefits-left">
+
+        <h2>
+            Dlaczego warto<br>
+            zacząć?
+        </h2>
+
+        <p>
+            Produkty cyfrowe to biznes,
+            który możesz zacząć od zera —
+            bez logistyki, bez firmy,
+            bez doświadczenia.
+        </p>
+
+    </div>
+
+
+    <div class="benefits-right">
+
+        <div class="benefit-card tilt-card">
+
+            <h3>💼 Twój Biznes?</h3>
+
+            <p>
+                <span>Jesteś swoim szefem</span>
+                i pracujesz z dowolnego miejsca,
+                kiedy chcesz.
+            </p>
+
+        </div>
+
+
+        <div class="benefit-card tilt-card">
+
+            <h3>🏢 Bez firmy?</h3>
+
+            <p>
+                <span>Możesz zacząć bez zakładania firmy</span>
+                i sprawdzić, czy to dla Ciebie.
+            </p>
+
+        </div>
+
+
+        <div class="benefit-card tilt-card">
+
+            <h3>💳 Ile trzeba na start?</h3>
+
+            <p>
+                <span>Dosłownie nic,</span>
+                produkt cyfrowy zrobisz
+                bez wkładu własnego.
+            </p>
+
+        </div>
+
+
+        <div class="benefit-card tilt-card">
+
+            <h3>✈️ Stała wolność</h3>
+
+            <p>
+                <span>Jesteś na wakacjach,</span>
+                a Twój sklep dalej działa.
+            </p>
+
+        </div>
+
+
+        <div class="benefit-card tilt-card">
+
+            <h3>⌨️ Bez kodowania</h3>
+
+            <p>
+                <span>Nie umiesz kodować?</span>
+                My ogarniamy stawianie sklepu.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="features reveal" id="features">
+
+    <div class="features-top">
+
+        <div class="section-badge">
+            Wszystko w jednym
+        </div>
+
+        <h2>
+            Co otrzymujesz po dołączeniu
+        </h2>
+
+        <p>
+            Pełen zestaw narzędzi, wiedzy i wsparcia do prowadzenia biznesu.
+        </p>
+
+    </div>
+
+
+
+    <div class="tabs">
+
+        <button class="tab active" data-tab="knowledge">
+            Wiedza
+        </button>
+
+        <button class="tab" data-tab="tools">
+            Narzędzia AI
+        </button>
+
+        <button class="tab" data-tab="integrations">
+            Integracje
+        </button>
+
+        <button class="tab" data-tab="community">
+            Społeczność
+        </button>
+
+    </div>
+
+
+
+    <div class="tab-content active" id="knowledge">
+
+        <div class="feature-card tilt-card">Marketing</div>
+        <div class="feature-card tilt-card">Tworzenie Sklepu</div>
+        <div class="feature-card tilt-card">Produkty Cyfrowe</div>
+        <div class="feature-card tilt-card">Checklisty</div>
+
+    </div>
+
+
+
+    <div class="tab-content" id="tools">
+
+        <div class="feature-card tilt-card">Kalkulator zysku</div>
+        <div class="feature-card tilt-card">Prompty copywritingowe</div>
+        <div class="feature-card tilt-card">Plan działania</div>
+        <div class="feature-card tilt-card">Produkty cyfrowe</div>
+
+    </div>
+
+
+
+    <div class="tab-content" id="integrations">
+
+        <div class="feature-card wide tilt-card">
+            Shopify
+        </div>
+
+    </div>
+
+
+
+    <div class="tab-content" id="community">
+
+        <div class="feature-card tilt-card">Chat społeczności</div>
+        <div class="feature-card tilt-card">Pomoc 24/7</div>
+        <div class="feature-card tilt-card">Opinie i sugestie</div>
+
+    </div>
+
+</section>
+
+<section class="steps reveal" id="steps">
+
+    <div class="steps-top">
+
+        <div class="section-badge">
+            Jak to działa?
+        </div>
+
+        <h2>
+            <span>4 proste kroki</span>
+            do sukcesu
+        </h2>
+
+        <p>
+            Od rejestracji do pierwszej sprzedaży.
+            Przeprowadzimy Cię przez cały proces.
+        </p>
+
+    </div>
+
+
+
+    <div class="steps-grid">
+
+        <div class="step-card tilt-card">
+
+            <div class="step-number">
+                01
+            </div>
+
+            <div class="step-icon">
+                👤
+            </div>
+
+            <h3>
+                Dołącz do K.D
+            </h3>
+
+            <p>
+                Uzyskaj natychmiastowy dostęp
+                do platformy.
+            </p>
+
+        </div>
+
+
+
+        <div class="step-card tilt-card">
+
+            <div class="step-number">
+                02
+            </div>
+
+            <div class="step-icon">
+                📖
+            </div>
+
+            <h3>
+                Ucz się z programu
+            </h3>
+
+            <p>
+                Przerabiaj materiały krok po kroku
+                i wdrażaj strategie.
+            </p>
+
+        </div>
+
+
+
+        <div class="step-card tilt-card">
+
+            <div class="step-number">
+                03
+            </div>
+
+            <div class="step-icon">
+                🚀
+            </div>
+
+            <h3>
+                Uruchom sprzedaż
+            </h3>
+
+            <p>
+                Wykorzystaj AI, narzędzia
+                i integracje.
+            </p>
+
+        </div>
+
+
+
+        <div class="step-card tilt-card">
+
+            <div class="step-number">
+                04
+            </div>
+
+            <div class="step-icon">
+                📈
+            </div>
+
+            <h3>
+                Rozwijaj K.D
+            </h3>
+
+            <p>
+                Skaluj sprzedaż i rozwijaj
+                biznes.
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="steps-footer">
+
+        Średni czas do pierwszej sprzedaży:
+        <span>1–3 dni</span>
+
+    </div>
+
+</section>
+
+</div>
+
+<div class="modal-overlay" id="modal">
+
+    <div class="modal-box">
+
+        <button class="close-modal" id="closeModal">
+            ✕
+        </button>
+
+
+        <div class="modal-badge">
+
+            Wybierz plan
+
+        </div>
+
+
+        <h2>
+
+            Dołącz do K.D Community
+
+        </h2>
+
+
+        <p>
+
+            Wybierz formę dostępu, która
+            jest najlepsza dla Ciebie.
+
+        </p>
+
+
+
+        <div class="pricing-grid">
+
+    <div class="pricing-card">
+
+        <h3>
+            Subskrypcja
+        </h3>
+
+        <div class="pricing-price monthly-price">
+
+            49,99 zł
+
+        </div>
+
+        <span>
+            co miesiąc
+        </span>
+
+        <a
+            href="https://buy.stripe.com/00wfZj6ZT9Gj5YleFU2Ry01"
+            class="pricing-button">
+
+            Wybieram →
+
+        </a>
+
+    </div>
+
+
+
+    <div class="pricing-card featured">
+
+        <h3>
+            Na Zawsze
+        </h3>
+
+        <div class="pricing-price lifetime-price">
+
+            199,99 zł
+
+        </div>
+
+        <span>
+            jednorazowo
+        </span>
+
+        <a
+            href="https://buy.stripe.com/6oU00lckd3hVeuR9lA2Ry00"
+            class="pricing-button">
+
+            Wybieram →
+
+        </a>
+
+    </div>
+
+</div>
+
+    </div>
+
+</div>
+
+<script>
+
+const dashboard = document.getElementById("dashboard");
+
+document.addEventListener("mousemove",(e)=>{
+
+    const x = (window.innerWidth/2 - e.clientX) / 40;
+    const y = (window.innerHeight/2 - e.clientY) / 40;
+
+    dashboard.style.transform =
+    `rotateY(${-x}deg) rotateX(${y}deg)`;
+
+});
+
+const tabs = document.querySelectorAll(".tab");
+const tabContents = document.querySelectorAll(".tab-content");
+
+tabs.forEach(tab=>{
+
+    tab.addEventListener("click",()=>{
+
+        tabs.forEach(item=>item.classList.remove("active"));
+        tabContents.forEach(item=>item.classList.remove("active"));
+
+        tab.classList.add("active");
+
+        document
+        .getElementById(tab.dataset.tab)
+        .classList.add("active");
+
+    });
+
+});
+
+const modal = document.getElementById("modal");
+
+document
+.getElementById("openModal")
+.addEventListener("click",()=>{
+
+    modal.classList.add("active");
+
+});
+
+
+document
+.getElementById("openModal")
+.addEventListener("touchstart",openPricing);
+
+document
+.getElementById("openModal")
+.addEventListener("click",openPricing);
+
+
+function openPricing(){
+
+    modal.classList.add("active");
+
+}
+
+
+modal.addEventListener("click",(e)=>{
+
+    if(e.target===modal){
+
+        modal.classList.remove("active");
+
+    }
+
+});
+
+const reveals = document.querySelectorAll(".reveal");
+
+const revealObserver = new IntersectionObserver(
+
+(entries)=>{
+
+    entries.forEach(entry=>{
+
+        if(entry.isIntersecting){
+
+            entry.target.classList.add("active");
+
+        }
+
+    });
+
+},
+
+{
+    threshold:.15
+}
+
+);
+
+reveals.forEach(section=>{
+
+    revealObserver.observe(section);
+
+});
+
+const smoothLinks =
+document.querySelectorAll(
+
+    '.nav-links a[href^="#"]'
+
+);
+
+
+
+smoothLinks.forEach(link=>{
+
+
+    link.onmousedown = function(e){
+
+        e.preventDefault();
+
+    };
+
+
+
+    link.onclick = function(e){
+
+        e.preventDefault();
+
+
+        const target =
+        document.querySelector(
+
+            this.getAttribute("href")
+
+        );
+
+
+        if(!target) return;
+
+
+        animateScroll(
+
+            target.offsetTop - 40
+
+        );
+
+    };
+
+});
+
+
+
+function animateScroll(targetY){
+
+    const startY =
+    window.scrollY;
+
+    const distance =
+    targetY - startY;
+
+    const duration = 2000;
+
+    let start = null;
+
+
+
+    function ease(t){
+
+        return 1 -
+
+        Math.pow(
+
+            1 - t,
+
+            4
+
+        );
+
+    }
+
+
+
+    function frame(timestamp){
+
+        if(!start){
+
+            start = timestamp;
+
+        }
+
+
+        const progress =
+        Math.min(
+
+            (timestamp - start)
+
+            / duration,
+
+            1
+
+        );
+
+
+        window.scrollTo(
+
+            0,
+
+            startY +
+
+            distance *
+
+            ease(progress)
+
+        );
+
+
+        if(progress < 1){
+
+            requestAnimationFrame(
+
+                frame
+
+            );
+
+        }
+
+    }
+
+
+
+    requestAnimationFrame(
+
+        frame
+
+    );
+
+}
+
+</script>
+
+</body>
+</html>
