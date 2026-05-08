@@ -2298,6 +2298,14 @@ tabs.forEach(tab=>{
 const modal = document.getElementById("modal");
 
 document
+.getElementById("closeModal")
+.addEventListener("click",()=>{
+
+    modal.classList.remove("active");
+
+});
+    
+document
 .getElementById("openModal")
 .addEventListener("click",()=>{
 
