@@ -44,11 +44,40 @@ body::before{
 
     position:fixed;
 
-    inset:0;
+    inset:-25%;
 
     background:
-    radial-gradient(circle at 20% 20%, rgba(0,255,208,.10), transparent 25%),
-    radial-gradient(circle at 80% 70%, rgba(0,100,255,.08), transparent 25%);
+    radial-gradient(circle at 18% 22%, rgba(0,255,208,.16), transparent 30%),
+    radial-gradient(circle at 82% 72%, rgba(0,110,255,.13), transparent 32%),
+    radial-gradient(circle at 62% 6%, rgba(0,255,208,.07), transparent 28%);
+
+    pointer-events:none;
+
+    animation:bgDrift 26s ease-in-out infinite alternate;
+}
+
+@keyframes bgDrift{
+
+    0%{transform:translate(0,0) scale(1);}
+    100%{transform:translate(-4%,3%) scale(1.14);}
+}
+
+body::after{
+
+    content:"";
+
+    position:fixed;
+
+    inset:0;
+
+    background-image:
+    linear-gradient(rgba(255,255,255,.022) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.022) 1px,transparent 1px);
+
+    background-size:64px 64px;
+
+    -webkit-mask-image:radial-gradient(circle at 50% 38%,black,transparent 75%);
+    mask-image:radial-gradient(circle at 50% 38%,black,transparent 75%);
 
     pointer-events:none;
 }
@@ -783,12 +812,16 @@ h1{
 
 .feature-card{
 
-    height:140px;
+    height:172px;
 
     display:flex;
 
+    flex-direction:column;
+
     justify-content:center;
     align-items:center;
+
+    gap:16px;
 
     text-align:center;
 
@@ -803,7 +836,7 @@ h1{
 
     font-family:"Plus Jakarta Sans",sans-serif;
 
-    font-size:24px;
+    font-size:19px;
 
     font-weight:700;
 
@@ -820,6 +853,38 @@ h1{
 
     box-shadow:
     0 0 35px rgba(0,255,208,.06);
+}
+
+.feature-icon{
+
+    width:56px;
+    height:56px;
+
+    flex-shrink:0;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border-radius:16px;
+
+    background:rgba(0,255,208,.08);
+
+    transition:.3s;
+}
+
+.feature-card:hover .feature-icon{
+
+    background:rgba(0,255,208,.14);
+}
+
+.feature-icon svg{
+
+    width:28px;
+    height:28px;
+
+    color:#00ffd0;
 }
 
 .steps{
@@ -1243,11 +1308,13 @@ h1{
     opacity:0;
 
     transform:
-    translateY(60px);
+    translateY(50px);
 
     transition:
-    opacity .9s ease,
-    transform .9s ease;
+    opacity 1s cubic-bezier(.22,1,.36,1),
+    transform 1s cubic-bezier(.22,1,.36,1);
+
+    will-change:opacity,transform;
 }
 
 .reveal.active{
@@ -1257,6 +1324,39 @@ h1{
     transform:
     translateY(0);
 }
+
+.reveal .benefit-card,
+.reveal .step-card{
+
+    opacity:0;
+
+    transform:translateY(40px);
+
+    transition:
+    opacity .7s ease,
+    transform .7s cubic-bezier(.22,1,.36,1),
+    border-color .3s ease,
+    box-shadow .3s ease;
+}
+
+.reveal.active .benefit-card,
+.reveal.active .step-card{
+
+    opacity:1;
+
+    transform:translateY(0);
+}
+
+.reveal.active .benefit-card:nth-child(1){transition-delay:.05s;}
+.reveal.active .benefit-card:nth-child(2){transition-delay:.13s;}
+.reveal.active .benefit-card:nth-child(3){transition-delay:.21s;}
+.reveal.active .benefit-card:nth-child(4){transition-delay:.29s;}
+.reveal.active .benefit-card:nth-child(5){transition-delay:.37s;}
+
+.reveal.active .step-card:nth-child(1){transition-delay:.05s;}
+.reveal.active .step-card:nth-child(2){transition-delay:.15s;}
+.reveal.active .step-card:nth-child(3){transition-delay:.25s;}
+.reveal.active .step-card:nth-child(4){transition-delay:.35s;}
 
 .legal-footer{
 
@@ -1582,9 +1682,23 @@ h1{
 
     .feature-card{
 
-        font-size:20px;
+        font-size:16px;
 
-        height:100px;
+        height:140px;
+
+        gap:12px;
+    }
+
+    .feature-icon{
+
+        width:48px;
+        height:48px;
+    }
+
+    .feature-icon svg{
+
+        width:24px;
+        height:24px;
     }
 
 
@@ -1668,6 +1782,332 @@ h1{
 
 }
 
+.about{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:80px;
+
+    padding:120px 0;
+}
+
+.about-photo{
+
+    position:relative;
+
+    flex:0 0 400px;
+
+    height:480px;
+}
+
+.about-photo-glow{
+
+    position:absolute;
+
+    inset:-30px;
+
+    background:radial-gradient(circle,rgba(0,255,208,.2),transparent 65%);
+
+    filter:blur(24px);
+}
+
+.about-photo-inner{
+
+    position:relative;
+
+    width:100%;
+    height:100%;
+
+    border-radius:32px;
+
+    border:1px solid rgba(0,255,208,.18);
+
+    background:linear-gradient(180deg,#0b1220,#09111b);
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+    align-items:center;
+
+    gap:14px;
+
+    overflow:hidden;
+
+    animation:float 6s ease-in-out infinite;
+}
+
+.about-photo-inner span{
+
+    font-size:60px;
+
+    opacity:.5;
+}
+
+.about-photo-inner p{
+
+    color:#7f8ba5;
+
+    font-size:15px;
+}
+
+.about-photo-inner img{
+
+    position:absolute;
+
+    inset:0;
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+}
+
+.about-text{
+
+    flex:1;
+
+    max-width:560px;
+}
+
+.about-text h2{
+
+    font-family:"Plus Jakarta Sans",sans-serif;
+
+    font-size:60px;
+
+    line-height:1;
+
+    letter-spacing:-3px;
+
+    margin:18px 0 24px;
+}
+
+.about-text > p{
+
+    color:#7f8ba5;
+
+    font-size:19px;
+
+    line-height:1.6;
+
+    margin-bottom:36px;
+}
+
+.about-stats{
+
+    display:flex;
+
+    gap:44px;
+}
+
+.about-stats div h3{
+
+    font-family:"Plus Jakarta Sans",sans-serif;
+
+    font-size:38px;
+
+    letter-spacing:-1px;
+
+    color:#00ffd0;
+}
+
+.about-stats div span{
+
+    color:#7f8ba5;
+
+    font-size:14px;
+}
+
+.faq{
+
+    padding:140px 0;
+}
+
+.faq-list{
+
+    max-width:820px;
+
+    margin:50px auto 0;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:16px;
+}
+
+.faq-item{
+
+    border:1px solid rgba(255,255,255,.06);
+
+    border-radius:20px;
+
+    background:linear-gradient(180deg,#0b1220,#09111b);
+
+    overflow:hidden;
+
+    transition:.3s;
+}
+
+.faq-item:hover{
+
+    border-color:rgba(0,255,208,.12);
+}
+
+.faq-item.active{
+
+    border-color:rgba(0,255,208,.2);
+}
+
+.faq-question{
+
+    width:100%;
+
+    display:flex;
+
+    justify-content:space-between;
+    align-items:center;
+
+    gap:20px;
+
+    padding:26px 30px;
+
+    background:none;
+
+    border:none;
+
+    cursor:pointer;
+
+    color:white;
+
+    font-family:"Plus Jakarta Sans",sans-serif;
+
+    font-size:18px;
+
+    font-weight:600;
+
+    text-align:left;
+}
+
+.faq-icon{
+
+    flex-shrink:0;
+
+    width:32px;
+    height:32px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border-radius:10px;
+
+    background:rgba(0,255,208,.08);
+
+    color:#00ffd0;
+
+    font-size:24px;
+
+    transition:.3s;
+}
+
+.faq-item.active .faq-icon{
+
+    transform:rotate(45deg);
+
+    background:#00ffd0;
+
+    color:#08111d;
+}
+
+.faq-answer{
+
+    max-height:0;
+
+    overflow:hidden;
+
+    transition:max-height .4s ease;
+}
+
+.faq-answer p{
+
+    padding:0 30px 26px;
+
+    color:#7f8ba5;
+
+    font-size:16px;
+
+    line-height:1.6;
+}
+
+@media (max-width:768px){
+
+    .about{
+
+        flex-direction:column;
+
+        gap:40px;
+
+        padding:80px 0;
+
+        text-align:center;
+    }
+
+    .about-photo{
+
+        flex:0 0 auto;
+
+        width:100%;
+
+        max-width:320px;
+
+        height:380px;
+
+        margin:auto;
+    }
+
+    .about-text h2{
+
+        font-size:42px;
+    }
+
+    .about-text > p{
+
+        font-size:16px;
+    }
+
+    .about-stats{
+
+        justify-content:center;
+
+        gap:24px;
+
+        flex-wrap:wrap;
+    }
+
+    .faq{
+
+        padding:80px 0;
+    }
+
+    .faq-question{
+
+        font-size:15px;
+
+        padding:20px;
+    }
+
+    .faq-answer p{
+
+        padding:0 20px 20px;
+    }
+}
+
 </style>
 </head>
 <body>
@@ -1687,8 +2127,10 @@ h1{
     <div class="nav-links">
 
         <a href="#hero">Home</a>
+        <a href="#about">O mnie</a>
         <a href="#features">Oferta</a>
         <a href="#steps">Jak to działa?</a>
+        <a href="#faq">FAQ</a>
 
     </div>
 
@@ -1938,6 +2380,42 @@ h1{
 
 </section>
 
+<section class="about reveal" id="about">
+
+    <div class="about-photo">
+
+        <div class="about-photo-glow"></div>
+
+        <div class="about-photo-inner">
+
+            <img src="zdj.webp" alt="O mnie"> 
+
+        </div>
+
+    </div>
+
+
+    <div class="about-text">
+
+        <div class="section-badge">
+            Poznaj mnie
+        </div>
+
+        <h2>
+            Kim jestem?
+        </h2>
+
+        <p>
+            Nie jestem żadnym coachem.
+            Jestem autentyczny i mówie jak jest, bez lania wody i marketingowych bajek.
+            Proste że chcę się nachapać siana z kursu, ale różnica jest taka, że ja nie uczę teorii. Ja codziennie operuje digital dropshippingiem.
+            Nie uczę teorii. Mówię z poziomu praktyki.
+        </p>
+
+    </div>
+
+</section>
+
 <section class="features reveal" id="features">
 
     <div class="features-top">
@@ -1982,10 +2460,33 @@ h1{
 
     <div class="tab-content active" id="knowledge">
 
-        <div class="feature-card tilt-card">Marketing</div>
-        <div class="feature-card tilt-card">Tworzenie Sklepu</div>
-        <div class="feature-card tilt-card">Produkty Cyfrowe</div>
-        <div class="feature-card tilt-card">Checklisty</div>
+        <div class="feature-card tilt-card">
+            <div class="feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>
+            </div>
+            <span class="feature-label">Marketing</span>
+        </div>
+
+        <div class="feature-card tilt-card">
+            <div class="feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7"/><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><path d="M2 7v3a2 2 0 0 0 4 0V7m0 3a2 2 0 0 0 4 0V7m0 3a2 2 0 0 0 4 0V7m0 3a2 2 0 0 0 4 0V7"/></svg>
+            </div>
+            <span class="feature-label">Tworzenie Sklepu</span>
+        </div>
+
+        <div class="feature-card tilt-card">
+            <div class="feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>
+            </div>
+            <span class="feature-label">Produkty Cyfrowe</span>
+        </div>
+
+        <div class="feature-card tilt-card">
+            <div class="feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 17 2 2 4-4"/><path d="m3 7 2 2 4-4"/><path d="M13 6h8"/><path d="M13 12h8"/><path d="M13 18h8"/></svg>
+            </div>
+            <span class="feature-label">Checklisty</span>
+        </div>
 
     </div>
 
@@ -1993,10 +2494,33 @@ h1{
 
     <div class="tab-content" id="tools">
 
-        <div class="feature-card tilt-card">Kalkulator zysku</div>
-        <div class="feature-card tilt-card">Prompty copywritingowe</div>
-        <div class="feature-card tilt-card">Plan działania</div>
-        <div class="feature-card tilt-card">Produkty cyfrowe</div>
+        <div class="feature-card tilt-card">
+            <div class="feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="20" x="4" y="2" rx="2"/><line x1="8" x2="16" y1="6" y2="6"/><line x1="16" x2="16" y1="14" y2="18"/><path d="M8 10h.01"/><path d="M12 10h.01"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M8 18h.01"/><path d="M12 18h.01"/></svg>
+            </div>
+            <span class="feature-label">Kalkulator zysku</span>
+        </div>
+
+        <div class="feature-card tilt-card">
+            <div class="feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+            </div>
+            <span class="feature-label">Prompty copywritingowe</span>
+        </div>
+
+        <div class="feature-card tilt-card">
+            <div class="feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="19" r="3"/><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"/><circle cx="18" cy="5" r="3"/></svg>
+            </div>
+            <span class="feature-label">Plan działania</span>
+        </div>
+
+        <div class="feature-card tilt-card">
+            <div class="feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>
+            </div>
+            <span class="feature-label">Produkty cyfrowe</span>
+        </div>
 
     </div>
 
@@ -2005,7 +2529,10 @@ h1{
     <div class="tab-content" id="integrations">
 
         <div class="feature-card wide tilt-card">
-            Shopify
+            <div class="feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            </div>
+            <span class="feature-label">Shopify</span>
         </div>
 
     </div>
@@ -2014,9 +2541,26 @@ h1{
 
     <div class="tab-content" id="community">
 
-        <div class="feature-card tilt-card">Chat społeczności</div>
-        <div class="feature-card tilt-card">Pomoc 24/7</div>
-        <div class="feature-card tilt-card">Opinie i sugestie</div>
+        <div class="feature-card tilt-card">
+            <div class="feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+            </div>
+            <span class="feature-label">Chat społeczności</span>
+        </div>
+
+        <div class="feature-card tilt-card">
+            <div class="feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H4a1 1 0 0 1-1-1v-5a9 9 0 0 1 18 0v5a1 1 0 0 1-1 1h-2a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3"/><path d="M21 16v2a4 4 0 0 1-4 4h-5"/></svg>
+            </div>
+            <span class="feature-label">Pomoc 24/7</span>
+        </div>
+
+        <div class="feature-card tilt-card">
+            <div class="feature-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 10v12"/><path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2a3.13 3.13 0 0 1 3 3.88Z"/></svg>
+            </div>
+            <span class="feature-label">Opinie i sugestie</span>
+        </div>
 
     </div>
 
@@ -2144,6 +2688,110 @@ h1{
 
         Średni czas do pierwszej sprzedaży:
         <span>1–3 dni</span>
+
+    </div>
+
+</section>
+
+<section class="faq reveal" id="faq">
+
+    <div class="features-top">
+
+        <div class="section-badge">
+            FAQ
+        </div>
+
+        <h2>
+            Najczęstsze pytania
+        </h2>
+
+        <p>
+            Wszystko, co musisz wiedzieć przed dołączeniem.
+        </p>
+
+    </div>
+
+
+    <div class="faq-list">
+
+        <div class="faq-item">
+
+            <button class="faq-question">
+                Czy to dla początkujących?
+                <span class="faq-icon">+</span>
+            </button>
+
+            <div class="faq-answer">
+                <p>
+                    Tak. Możesz zacząć od zera. Wszystko masz krok po kroku.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="faq-item">
+
+            <button class="faq-question">
+                Potrzebuje jakichś technicznych umiejętności?
+                <span class="faq-icon">+</span>
+            </button>
+
+            <div class="faq-answer">
+                <p>
+                    Nie. Masz szablony, checklisty i gotowce. Wystarczy, że ogarniasz telefon i komputer.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="faq-item">
+
+            <button class="faq-question">
+                Skąd mam wiedzieć, co sprzedawać?
+                <span class="faq-icon">+</span>
+            </button>
+
+            <div class="faq-answer">
+                <p>
+                    Daję Ci system wyboru produktu. Wiesz, co ma szansę siąść w PL, a co jest stratą czasu.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="faq-item">
+
+            <button class="faq-question">
+                Muszę pokazywać twarz?
+                <span class="faq-icon">+</span>
+            </button>
+
+            <div class="faq-answer">
+                <p>
+                    Nie musisz. Masz przykłady kont, które robią setki tysięcy wyświetleń bez twarzy.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="faq-item">
+
+            <button class="faq-question">
+                Kiedy dostanę dostęp do społeczności?
+                <span class="faq-icon">+</span>
+            </button>
+
+            <div class="faq-answer">
+                <p>
+                    Od razu po zakupie. Dostajesz zaproszenie na zamkniętego Discorda i dostęp do materiałów.
+                </p>
+            </div>
+
+        </div>
 
     </div>
 
@@ -2304,7 +2952,7 @@ document
     modal.classList.remove("active");
 
 });
-    
+
 document
 .getElementById("openModal")
 .addEventListener("click",()=>{
@@ -2663,6 +3311,67 @@ document
         );
 
     }
+
+});
+
+document
+.querySelectorAll(".tilt-card")
+.forEach(card=>{
+
+    card.addEventListener("mousemove",(e)=>{
+
+        const r = card.getBoundingClientRect();
+
+        const cx = e.clientX - r.left - r.width/2;
+        const cy = e.clientY - r.top - r.height/2;
+
+        card.style.transform =
+        `perspective(800px) rotateY(${cx/r.width*10}deg) `+
+        `rotateX(${-cy/r.height*10}deg) translateY(-6px)`;
+
+    });
+
+    card.addEventListener("mouseleave",()=>{
+
+        card.style.transform = "";
+
+    });
+
+});
+
+
+const faqItems =
+document.querySelectorAll(".faq-item");
+
+faqItems.forEach(item=>{
+
+    const question = item.querySelector(".faq-question");
+    const answer = item.querySelector(".faq-answer");
+
+    question.addEventListener("click",()=>{
+
+        const isOpen =
+        item.classList.contains("active");
+
+        faqItems.forEach(other=>{
+
+            other.classList.remove("active");
+
+            other.querySelector(".faq-answer")
+            .style.maxHeight = null;
+
+        });
+
+        if(!isOpen){
+
+            item.classList.add("active");
+
+            answer.style.maxHeight =
+            answer.scrollHeight + "px";
+
+        }
+
+    });
 
 });
 
